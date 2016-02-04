@@ -1,0 +1,1 @@
+var household_images = [{"name":"household_6","type":"folder","children":[{"name":"full_home_6.jpg"},{"name":"kitchen_6.jpg"},{"name":"single_meal_6.jpg"}]},{"name":"household_7","type":"folder","children":[{"name":"full_home_7.jpg"},{"name":"kitchen_7.jpg"}]},{"name":"household_8","type":"folder","children":[{"name":"full_home_8.jpg"},{"name":"kitchen_8.jpg"}]}]

@@ -1,15 +1,7 @@
 $(document).ready(function() {
-    var $container = $('#container');
+   $("#content").hide();
 
-    $container.isotope({
-        sortAscending: true,
-        getSortData: {
-            rent: function(itemElem) {
-                var rent = $(itemElem).find('.attr-rent').text();
-                return parseFloat(rent.replace(/[\(\)]/g, ''));
-            }
-        }
-    });
+    var $container = $('#container');
 
     $('#button').click(function() {
 
@@ -20,4 +12,19 @@ $(document).ready(function() {
         return false;
 
     });
+
+    $("#splash").on("click", function(e) {
+        e.preventDefault();
+        $(this).hide();        
+        $("#content").show();
+        $container.isotope({
+            sortAscending: true,
+            getSortData: {
+                rent: function(itemElem) {
+                    var rent = $(itemElem).find('.attr-rent').text();
+                    return parseFloat(rent.replace(/[\(\)]/g, ''));
+                }
+            }
+        });        
+    })
 });

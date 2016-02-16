@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="css/main.css">
     <!-- <script src="js/vendor/modernizr-2.8.3.min.js"></script> -->
     <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script src="bower_components/vide/dist/jquery.vide.min.js"></script>
     <script src="bower_components/isotope/dist/isotope.pkgd.js"></script>
     <script src="data/household_data.js"></script>
     <script src="data/images_data.js"></script>
@@ -65,45 +66,63 @@
         .clear {
             clear: both;
         }
+        #splash { overflow: hidden;cursor:pointer;}
+        #splash-video { position: relative; }
+        #intro-text { position: absolute; top:0px;color:white;font-weight:100;font-size:5em;text-align: center;width:100%;margin-top:10rem;}
+        #intro-text h1 { font-family:"Futura"; }
+        
     </style>
 </head>
 
 <body>
-    <div id="button" data-sort-value="attr-rent">sort by rent</div>
-    <div class="clear"></div>
-    <div id="container"></div>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            var data = household_data;
-            var images = household_images;
-            // append content to dom
-            $(data).each(function(i, key) {
-                    console.log(key)
-                    $("#container").append("<div class='household' attr-id='" + key.household_id + "'><div class='attr-rent'>" + key.Q14_27_monthly_rent + "</div><div class='lockup'><p class='names'>Family</p><p class='name_1'>" + key.Q1_6 + "</p><p class='name_2'>" + key.Q1_7 + "</p></div><div class='lockup'><p class='rents'>Rent</p><p class='rent'>" + key.Q14_27_monthly_rent + "</p><div class='clear'></div></div>")
-                })
-                // attach images to matching div
-            $(images).each(function(j, img) {
-                _img = Number(img.name.split("household_")[1]);
-
-                // check image against div
+    
+    <div id="splash">
+        <div id="splash-video" style="width: 1400px; height: 800px"
+          data-vide-bg="mp4: assets/video/video-splash.mp4, ogv: assets/video/video-splash.ogg, poster: assets/video/video-splash.jpg"
+          data-vide-options="posterType: jpg, loop: true, muted: false, position: 50% 50%">
+        </div>
+        <div id="intro-text">
+            <h1>visual survey</h1>
+        </div>
+    </div>
+    
+    <div id="content">
+        <div id="button" data-sort-value="attr-rent">sort by rent</div>
+        <div class="clear"></div>
+        <div id="container"></div>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                var data = household_data;
+                var images = household_images;
+                // append content to dom
                 $(data).each(function(i, key) {
+                        console.log(key)
+                        $("#container").append("<div class='household' attr-id='" + key.household_id + "'><div class='attr-rent'>" + key.Q14_27_monthly_rent + "</div><div class='lockup'><p class='names'>Family</p><p class='name_1'>" + key.Q1_6 + "</p><p class='name_2'>" + key.Q1_7 + "</p></div><div class='lockup'><p class='rents'>Rent</p><p class='rent'>" + key.Q14_27_monthly_rent + "</p><div class='clear'></div></div>")
+                    })
+                    // attach images to matching div
+                $(images).each(function(j, img) {
+                    _img = Number(img.name.split("household_")[1]);
 
-                    // if div matches, append photo container
-                    if (_img == key.household_id) {
-                        $(".household[attr-id=" + key.household_id + "]").append("<div class=' lockup_images'><p class='photos'>Photos</p></div>");
+                    // check image against div
+                    $(data).each(function(i, key) {
 
-                        // cycle through folders and attach images
-                        $(img.children).each(function(k, the_img) {
-                            console.log(the_img.name)
-                            $(".household[attr-id=" + key.household_id + "] .lockup_images").append("<p class='img'><img src='assets/" + img.name + "/" + the_img.name + "' width='100%'/></p>");
-                        })
-                    }
+                        // if div matches, append photo container
+                        if (_img == key.household_id) {
+                            $(".household[attr-id=" + key.household_id + "]").append("<div class=' lockup_images'><p class='photos'>Photos</p></div>");
+
+                            // cycle through folders and attach images
+                            $(img.children).each(function(k, the_img) {
+                                console.log(the_img.name)
+                                $(".household[attr-id=" + key.household_id + "] .lockup_images").append("<p class='img'><img src='assets/" + img.name + "/" + the_img.name + "' width='100%'/></p>");
+                            })
+                        }
+                    })
                 })
+                //console.log(data)
+                //console.log(images
             })
-            //console.log(data)
-            //console.log(images
-        })
-    </script>
+        </script>
+    </div>
     <script src="js/main.js"></script>
 </body>
 </html>

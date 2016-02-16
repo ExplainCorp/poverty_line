@@ -3,6 +3,23 @@ poverty_line
 
 ##India poverty line project 
 
+###Feb 15, 2016: Video splash || tal
+**Dev Notes:**
+cd into your fork
+
+```
+git checkout master
+git pull origin master
+git checkout -b your-branch
+```
+do work in your branch
+```
+git checkout master
+git merge your-branch
+git push origin master
+```
+(i think)
+
 ###Feb 3, 2016: Basic sorting functionality working || tal
 
 **Visual Notes:**

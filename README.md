@@ -4,7 +4,11 @@ poverty_line
 ##India poverty line project 
 
 ###Feb 15, 2016: Video splash || tal
+
+**new url: [explain.nyc/survey](http://www.explain.nyc/survey)**
+
 **Dev Notes:**
+
 cd into your fork
 
 ```

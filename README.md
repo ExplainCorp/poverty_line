@@ -3,6 +3,8 @@ poverty_line
 
 ##India poverty line project 
 
+### Feb 17, 2016 Created new fork. Testing. ||evan
+
 ###Feb 15, 2016: Video splash || tal
 
 **new url: [explain.nyc/survey](http://www.explain.nyc/survey)**
@@ -38,7 +40,7 @@ git push origin master
 - "images_data.js" will now be placed in the data directory encapsulated within "household_images"
 - Reduce image file size for faster load
 
-###Feb 3, 2016: New prototype commits moving forward || ERW
+###Feb 3, 2016: New prototype commits moving forward || evan
 
 
 

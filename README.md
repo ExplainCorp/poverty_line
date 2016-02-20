@@ -3,6 +3,8 @@ poverty_line
 
 ##India poverty line project 
 
+### Feb 20, 2016 Added potential text treatment to index. ||evan
+
 ### Feb 17, 2016 Created new fork. Testing. ||evan
 
 ###Feb 15, 2016: Video splash || tal

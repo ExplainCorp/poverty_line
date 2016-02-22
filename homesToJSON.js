@@ -47,6 +47,6 @@ diretoryTreeToObj(dirTree, function(err, res){
         console.error(err);
 
     fs.writeFile('data/images_data.js', "var household_images = " + JSON.stringify(res), function (err) {
-        console.log('data saved to homesOutput.js');
+        console.log('data saved to data/images_data.js');
     });
 });

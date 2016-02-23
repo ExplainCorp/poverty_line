@@ -12,7 +12,7 @@
     <!-- Place favicon.ico in the root directory -->
 
     <!-- <link rel="stylesheet" href="css/normalize.css"> -->
-    <link rel="stylesheet" href="css/main.css">
+    <!--<link rel="stylesheet" href="css/main.css">-->
     <!-- <script src="js/vendor/modernizr-2.8.3.min.js"></script> -->
     <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
     <script src="bower_components/vide/dist/jquery.vide.min.js"></script>
@@ -25,33 +25,55 @@
             margin: 0px;
             font-family: Helvetica;
         }
-        .attr-rent {
-            display: none
+        .attr-wheat {
+            display: none;
+        }
+        .attr-milk { 
+            display: none;
+        }
+        .attr-phone {
+            display: none;
         }
         #container {
             line-height: 1.3em;
         }
-        .household,
-        #button {
+        .household {
+            padding: 0rem;
+            float: left;
+            width: 30%;
+            height:20rem;
+            margin:0px 1px 1px 0px;
+        }
+        .button {
             border: 1px solid #efefef;
             padding: 2rem;
             float: left;
-            width: 15rem;
-            margin-bottom: 0rem;
-        }
-        #button:hover {
+            width: 6rem;
+            height:6rem;
+            margin-bottom: 0rem;         
+        }        
+        #button-sort .button p { margin:0em;padding:0em 0em .5em 0em;font-size:.7em;color:grey;text-transform: lowercase;text-align: center }
+        #button-sort .button:hover {
             cursor: pointer;
-            background: black;
+            background: white;
             color: white;
         }
+        #button-sort .button:hover p { color:blue;}
+        #button-sort .active { border:1px solid blue;}
+        #button-filter .button p { margin:0em;padding:0em 0em .5em 0em;font-size:.7em;color:grey;text-transform: lowercase;text-align: center }
+        #button-filter .button:hover {
+            cursor: pointer;
+            background: white;
+            color: white;
+        }
+        #button-filter .button:hover p { color:purple;}
+        #button-filter .active { border:1px solid purple;}
         .names,
-        .rents,
         .photos {
             font-weight: bold;
             font-size: .7em;
             text-transform: uppercase;
         }
-        .rents,
         .photos {
             margin-top: 1.5rem;
         }
@@ -61,18 +83,22 @@
             font-family: georgia;
         }
         .lockup {
-            height: 3.5rem;
+            height: 2rem;
         }
         .clear {
             clear: both;
         }
+        .names.milk { display: none}
+        .names.phone { display: none}
+        #button-filter { margin-left:1rem;}
         #splash { }
+        #content { padding: 1rem;}
         #intro-text:hover  { background:rgba(255,255,255,.3);overflow: hidden;cursor:pointer; }
         #intro-text:hover h1 { opacity:1;color: black}
         #splash-video { position: relative; }
         #intro-text { position: absolute; top:0px;color:white;font-weight:100;font-size:5em;text-align: center;width:80%;left:10%;margin-top:3.5rem;background:rgba(255,255,255,.0);}
         #intro-text h1 { font-family:"Futura"; padding:1em 0em;color:white;opacity: .3}
-        
+        .buttons-group { float:left;margin-bottom:3rem;}
     </style>
 </head>
 
@@ -89,18 +115,40 @@
     </div>
     
     <div id="content">
-        <div id="button" data-sort-value="attr-rent">sort by rent</div>
+        <div id="button-sort" class="buttons-group">
+            <div class="button active" data-sort-value="attr-wheat">
+                <p>sort by Wheat</p><img src="buttons/wheat.png" width="100%">
+            </div>
+            <div class="button" data-sort-value="attr-milk">
+                <p>sort by Milk</p><img src="buttons/milk.png" width="100%">
+            </div>
+            <div class="button" data-sort-value="attr-phone">
+                <p>sort by Phone</p><img src="buttons/phone.png" width="100%">
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div id="button-filter" class="buttons-group">
+            <div class="button active" data-sort-value="attr-hands">
+                <p>filter by hands</p><img src="buttons/hands.png" width="100%">
+            </div>
+            <div class="button" data-sort-value="attr-face">
+                <p>filter by faces</p><img src="buttons/face.png" width="100%">
+            </div>
+            <div class="button" data-sort-value="attr-house">
+                <p>filter by houses</p><img src="buttons/house.png" width="100%">
+            </div>
+            <div class="clear"></div>
+        </div>
         <div class="clear"></div>
         <div id="container"></div>
         <script type="text/javascript">
             $(document).ready(function() {
                 var data = household_data;
                 var images = household_images;
-                // append content to dom
+                // append content to dom // phone/tv/internet
                 $(data).each(function(i, key) {
                         console.log(key)
-                        $("#container").append("<div class='household' attr-id='" + key.household_id + "'><div class='attr-rent'>" + key.Q14_27_monthly_rent + "</div><div class='lockup'><p class='names'>Family</p><p class='name_1'>" + key.Q1_6 + "</p><p class='name_2'>" + key.Q1_7 + "</p></div><div class='lockup'><p class='rents'>Rent</p><p class='rent'>" + key.Q14_27_monthly_rent + "</p><div class='clear'></div></div>")
-                    })
+                        $("#container").append("<div class='household' attr-id='" + key.household_id + "'><div class='attr-wheat'>" + key.Wheat + "</div><div class='attr-milk'>" + key.milk + "</div><div class='attr-phone'>" + key["phone/tv/internet"] + "</div><div class='lockup'><p class='names wheat'>Wheat: "+key.Wheat+"</p><p class='names milk'>milk: "+key.milk+"</p><p class='names phone'>phone/tv/net: "+key["phone/tv/internet"]+"</p></div>")})
                     // attach images to matching div
                 $(images).each(function(j, img) {
                     _img = Number(img.name.split("household_")[1]);
@@ -110,10 +158,10 @@
 
                         // if div matches, append photo container
                         if (_img == key.household_id) {
-                            $(".household[attr-id=" + key.household_id + "]").append("<div class=' lockup_images'><p class='photos'>Photos</p></div>");
+                            $(".household[attr-id=" + key.household_id + "]").prepend("<div class=' lockup_images'></div>");
 
                             // cycle through folders and attach images
-                            $(img.children).each(function(k, the_img) {
+                            $(img.children[0]).each(function(k, the_img) {
                                 console.log(the_img.name)
                                 $(".household[attr-id=" + key.household_id + "] .lockup_images").append("<p class='img'><img src='assets/" + img.name + "/" + the_img.name + "' width='100%'/></p>");
                             })

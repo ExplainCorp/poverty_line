@@ -3,15 +3,17 @@ $(document).ready(function() {
 
     var $container = $('#container');
 
-    $('#button').click(function() {
-
-        $container.isotope({
-            sortBy: 'rent'
-        });
-
+    $('#button-sort .button').click(function(e) {
+        e.preventDefault();
+        var selector = $(this).attr('data-sort-value').split("attr-")[1];
+        $('.names').hide();
+        $('.names.'+selector).show();
+        $('#button-sort .button').removeClass("active");
+        $(this).addClass('active');
+        $container.isotope({ sortBy: selector });
         return false;
 
-    });
+    });  
 
     $("#splash").on("click", function(e) {
         e.preventDefault();
@@ -20,11 +22,21 @@ $(document).ready(function() {
         $container.isotope({
             sortAscending: true,
             getSortData: {
-                rent: function(itemElem) {
-                    var rent = $(itemElem).find('.attr-rent').text();
-                    return parseFloat(rent.replace(/[\(\)]/g, ''));
-                }
+                wheat: function(itemElem) {
+                    var _selector = $(itemElem).find('.attr-wheat').text();
+                    return parseFloat(_selector.replace(/[\(\)]/g, ''));
+                },
+                milk: function(itemElem) {
+                    var _selector = $(itemElem).find('.attr-milk').text();
+                    return parseFloat(_selector.replace(/[\(\)]/g, ''));
+                },   
+                phone: function(itemElem) {
+                    var _selector = $(itemElem).find('.attr-phone').text();
+                    return parseFloat(_selector.replace(/[\(\)]/g, ''));
+                }                             
             }
         });        
-    })
+        $container.isotope({ sortBy: 'wheat' }); 
+    });
+
 });

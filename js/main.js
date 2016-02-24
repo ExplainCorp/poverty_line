@@ -38,5 +38,17 @@ $(document).ready(function() {
         });        
         $container.isotope({ sortBy: 'wheat' }); 
     });
+    $("#button-filter .button").on("click", function(e) {
+        e.preventDefault();
+        var filter = $(this).attr("data-filter");
 
+        $('#button-filter .button').removeClass("active");
+        $(this).addClass('active');        
+
+        $(".household").each(function(i,item) {
+            get_attr = $(this).attr("attr-id");
+            $(this).find("img").attr("src", "assets/household_"+get_attr+"/"+filter+"_"+get_attr+".jpg")
+        })
+
+    })
 });

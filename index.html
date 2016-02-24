@@ -42,10 +42,10 @@
             float: left;
             width: 30%;
             height:20rem;
-            margin:0px 1px 1px 0px;
+            margin:0rem .2rem .2rem 0rem;
         }
         .button {
-            padding: 2rem;
+            padding: 1.5rem;
             float: left;
             width: 8rem;
             height:8rem;
@@ -70,6 +70,7 @@
             background: white;
             color: white;
         }
+        #button-filter { float:left;}
         #button-filter .button:hover p { color:gray;}
         #button-filter .active { border-bottom: 3px solid gray;}
         .names,
@@ -103,12 +104,14 @@
         #intro-text { position: absolute; top:0px;color:white;font-weight:100;font-size:5em;text-align: center;width:80%;left:10%;margin-top:3.5rem;background:rgba(255,255,255,.0);}
         #intro-text h1 { font-family:"Futura"; padding:1em 0em;color:white;opacity: .3}
         .buttons-group { float:left;margin-bottom:3rem;}
-        
+        .button-labels { width:34rem;float:left;padding:0rem;font-size:14px;font-weight:100;}
+        #button-label-right { }
+        #button-label-left { }
         /* ---- Font Stuff ---- */
-        h1{
-	border-bottom: black solid 3px;
-	padding-bottom: 20px;
-			}
+        h1 {
+            font-weight:100;
+            padding-bottom: 35px;
+		}
 		
     </style>
 </head>
@@ -126,41 +129,50 @@
     </div>
     
     <div id="content">
-	    <h1> A visual survey of Sapsaul Village, Uttar Pradesh, India</h1>
+	    <h1>A visual survey of Sapsaul Village, Uttar Pradesh, India</h1>
+        <div class="button-labels" id="button-label-left">
+            <p>sort by &#8650;</p>
+        </div>
+         <div class="button-labels" id="button-label-left">
+            <p>filter by &#8650;</p>
+        </div>
+        <div class="clear"></div>
         <div id="button-sort" class="buttons-group">
             <div class="button active" data-sort-value="attr-wheat">
-                <p></p><img src="buttons/wheat_n.png" width="100%">
+                <img src="buttons/wheat_n.png" width="100%" />
             </div>
             <div class="button" data-sort-value="attr-milk">
-                <p style="margin-top: -29px; font-size: 1.4em; color: black;">SORT BY</p><img src="buttons/milk_n.png" width="100%">
+                <img src="buttons/milk_n.png" width="100%" />
             </div>
             <div class="button" data-sort-value="attr-phone">
-                <p></p><img src="buttons/phone_n.png" width="100%">
+                <img src="buttons/phone_n.png" width="100%" />
             </div>
             <div class="clear"></div>
         </div>
-        
+
+
+
         <div id="button-filter" class="buttons-group">
-            <div class="button active" data-sort-value="attr-hands">
-                <p></p><img src="buttons/hands_n.png" width="100%">
+            <div class="button active" data-filter="hands">
+                <img src="buttons/hands_n.png" width="100%" />
             </div>
-            <div class="button" data-sort-value="attr-face">
-                <p style="margin-top: -29px; font-size: 1.4em; color: black;">FILTER BY</p><img src="buttons/face_n.png" width="100%">
+            <div class="button" data-filter="face">
+                <img src="buttons/face_n.png" width="100%" />
             </div>
-            <div class="button" data-sort-value="attr-house">
-                <p></p><img src="buttons/house_n.png" width="100%">
+            <div class="button" data-filter="full_home">
+                <img src="buttons/house_n.png" width="100%" />
             </div>
             <div class="clear"></div>
         </div>
         <div class="clear"></div>
         <div id="container"></div>
         <script type="text/javascript">
+            var data = household_data;
+            var images = household_images;        
             $(document).ready(function() {
-                var data = household_data;
-                var images = household_images;
                 // append content to dom // phone/tv/internet
                 $(data).each(function(i, key) {
-                        console.log(key)
+                        //console.log(key)
                         $("#container").append("<div class='household' attr-id='" + key.household_id + "'><div class='attr-wheat'>" + key.Wheat + "</div><div class='attr-milk'>" + key.milk + "</div><div class='attr-phone'>" + key["phone/tv/internet"] + "</div><div class='lockup'><p class='names wheat'>Wheat: "+key.Wheat+"</p><p class='names milk'>milk: "+key.milk+"</p><p class='names phone'>phone/tv/net: "+key["phone/tv/internet"]+"</p></div>")})
                     // attach images to matching div
                 $(images).each(function(j, img) {
@@ -175,8 +187,8 @@
 
                             // cycle through folders and attach images
                             $(img.children[0]).each(function(k, the_img) {
-                                console.log(the_img.name)
-                                $(".household[attr-id=" + key.household_id + "] .lockup_images").append("<p class='img'><img src='assets/" + img.name + "/" + the_img.name + "' width='100%'/></p>");
+                                //console.log(the_img.name)
+                                $(".household[attr-id=" + key.household_id + "] .lockup_images").html("<p class='img'><img src='assets/" + img.name + "/" + the_img.name + "' width='100%'/></p>");
                             })
                         }
                     })

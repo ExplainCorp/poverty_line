@@ -63,7 +63,7 @@
             color: white;
         }
         #button-sort .button:hover p { color:black;}
-        #button-sort .active { border:1px solid black;}
+        #button-sort .active { border-bottom: 3px solid black;}
         #button-filter .button p { margin:0em;padding:0em 0em .5em 0em;font-size:.7em;color:grey;text-transform: lowercase;text-align: center }
         #button-filter .button:hover {
             cursor: pointer;
@@ -71,7 +71,7 @@
             color: white;
         }
         #button-filter .button:hover p { color:gray;}
-        #button-filter .active { border:1px solid gray;}
+        #button-filter .active { border-bottom: 3px solid gray;}
         .names,
         .photos {
             font-weight: bold;
@@ -109,13 +109,7 @@
 	border-bottom: black solid 3px;
 	padding-bottom: 20px;
 			}
-			
-		h3 {
-			
-			height: 30px;
-			
-					}
-        
+		
     </style>
 </head>
 
@@ -132,27 +126,26 @@
     </div>
     
     <div id="content">
-	    <h1> A visual survey of modern India </h1>
-	    <h3 class="sort-filter"> Sort by </h3>
+	    <h1> A visual survey of Sapsaul Village, Uttar Pradesh, India</h1>
         <div id="button-sort" class="buttons-group">
             <div class="button active" data-sort-value="attr-wheat">
                 <p></p><img src="buttons/wheat_n.png" width="100%">
             </div>
             <div class="button" data-sort-value="attr-milk">
-                <p></p><img src="buttons/milk_n.png" width="100%">
+                <p style="margin-top: -29px; font-size: 1.4em; color: black;">SORT BY</p><img src="buttons/milk_n.png" width="100%">
             </div>
             <div class="button" data-sort-value="attr-phone">
                 <p></p><img src="buttons/phone_n.png" width="100%">
             </div>
             <div class="clear"></div>
         </div>
-        <h3> Filter by </h3>
+        
         <div id="button-filter" class="buttons-group">
             <div class="button active" data-sort-value="attr-hands">
                 <p></p><img src="buttons/hands_n.png" width="100%">
             </div>
             <div class="button" data-sort-value="attr-face">
-                <p></p><img src="buttons/face_n.png" width="100%">
+                <p style="margin-top: -29px; font-size: 1.4em; color: black;">FILTER BY</p><img src="buttons/face_n.png" width="100%">
             </div>
             <div class="button" data-sort-value="attr-house">
                 <p></p><img src="buttons/house_n.png" width="100%">

@@ -45,29 +45,33 @@
             margin:0px 1px 1px 0px;
         }
         .button {
-            border: 1px solid #efefef;
             padding: 2rem;
             float: left;
-            width: 6rem;
-            height:6rem;
+            width: 8rem;
+            height:8rem;
             margin-bottom: 0rem;         
         }        
+        
+        .button:hover{
+	        opacity: .80;
+	        
+        }
         #button-sort .button p { margin:0em;padding:0em 0em .5em 0em;font-size:.7em;color:grey;text-transform: lowercase;text-align: center }
         #button-sort .button:hover {
             cursor: pointer;
             background: white;
             color: white;
         }
-        #button-sort .button:hover p { color:blue;}
-        #button-sort .active { border:1px solid blue;}
+        #button-sort .button:hover p { color:black;}
+        #button-sort .active { border-bottom: 3px solid black;}
         #button-filter .button p { margin:0em;padding:0em 0em .5em 0em;font-size:.7em;color:grey;text-transform: lowercase;text-align: center }
         #button-filter .button:hover {
             cursor: pointer;
             background: white;
             color: white;
         }
-        #button-filter .button:hover p { color:purple;}
-        #button-filter .active { border:1px solid purple;}
+        #button-filter .button:hover p { color:gray;}
+        #button-filter .active { border-bottom: 3px solid gray;}
         .names,
         .photos {
             font-weight: bold;
@@ -99,6 +103,13 @@
         #intro-text { position: absolute; top:0px;color:white;font-weight:100;font-size:5em;text-align: center;width:80%;left:10%;margin-top:3.5rem;background:rgba(255,255,255,.0);}
         #intro-text h1 { font-family:"Futura"; padding:1em 0em;color:white;opacity: .3}
         .buttons-group { float:left;margin-bottom:3rem;}
+        
+        /* ---- Font Stuff ---- */
+        h1{
+	border-bottom: black solid 3px;
+	padding-bottom: 20px;
+			}
+		
     </style>
 </head>
 
@@ -115,27 +126,29 @@
     </div>
     
     <div id="content">
+	    <h1> A visual survey of Sapsaul Village, Uttar Pradesh, India</h1>
         <div id="button-sort" class="buttons-group">
             <div class="button active" data-sort-value="attr-wheat">
-                <p>sort by Wheat</p><img src="buttons/wheat.png" width="100%">
+                <p></p><img src="buttons/wheat_n.png" width="100%">
             </div>
             <div class="button" data-sort-value="attr-milk">
-                <p>sort by Milk</p><img src="buttons/milk.png" width="100%">
+                <p style="margin-top: -29px; font-size: 1.4em; color: black;">SORT BY</p><img src="buttons/milk_n.png" width="100%">
             </div>
             <div class="button" data-sort-value="attr-phone">
-                <p>sort by Phone</p><img src="buttons/phone.png" width="100%">
+                <p></p><img src="buttons/phone_n.png" width="100%">
             </div>
             <div class="clear"></div>
         </div>
+        
         <div id="button-filter" class="buttons-group">
             <div class="button active" data-sort-value="attr-hands">
-                <p>filter by hands</p><img src="buttons/hands.png" width="100%">
+                <p></p><img src="buttons/hands_n.png" width="100%">
             </div>
             <div class="button" data-sort-value="attr-face">
-                <p>filter by faces</p><img src="buttons/face.png" width="100%">
+                <p style="margin-top: -29px; font-size: 1.4em; color: black;">FILTER BY</p><img src="buttons/face_n.png" width="100%">
             </div>
             <div class="button" data-sort-value="attr-house">
-                <p>filter by houses</p><img src="buttons/house.png" width="100%">
+                <p></p><img src="buttons/house_n.png" width="100%">
             </div>
             <div class="clear"></div>
         </div>
